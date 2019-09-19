@@ -47,6 +47,7 @@ async function getNextTweets(tweet) {
     }
     return next
 }
+
 router.post('/tweet', function (req, res) {
     const tweet = new Tweet({
         user: getUserHeader(),
@@ -64,6 +65,7 @@ router.delete('/tweet/:id', function (req, res) {
 
     // Tweet.findByIdAndRemove(req.params.id).
 })
+
 router.get('/user/:id', function (req, res) { //get user tweets
     User.findById(req.params.id).exec((err, user) => {
         Tweet.find({ user: user }).populate("user", "name imageUrl").exec((err, tweets) => {
@@ -98,12 +100,12 @@ router.put('/unfollow/:follow_id', function (req, res) {
 
 })
 router.post('/user', function (req, res) {
-    const user = new User({
-        name: "Luli",
-        email: "luli@gmail.com",
-        imageUrl: "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiVrsb96NrkAhUQGewKHd5kCrYQjRx6BAgBEAQ&url=https%3A%2F%2Ficon-library.net%2Ficon%2Fperson-image-icon-7.html&psig=AOvVaw0B2Fxx2SURD42nDBeT0i4X&ust=1568911512313350",
-        creationTime: moment().format()
-    })
+    // const user = new User({
+    //     name: "Luli",
+    //     email: "luli@gmail.com",
+    //     imageUrl: "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiVrsb96NrkAhUQGewKHd5kCrYQjRx6BAgBEAQ&url=https%3A%2F%2Ficon-library.net%2Ficon%2Fperson-image-icon-7.html&psig=AOvVaw0B2Fxx2SURD42nDBeT0i4X&ust=1568911512313350",
+    //     creationTime: moment().format()
+    // })
     // const user = new User({
     //     name: "Liat Cohen",
     //     email: "liatcohen@gmail.com",
@@ -115,8 +117,8 @@ router.post('/user', function (req, res) {
 })
 
 const getUserHeader = () => {
-    // return "5d825f5d190523278ba42324" //luli
-    return "5d83422e6f50a23c38db2e0f" //Liat Cohen
+    return "5d83dc01d3bfb47b0c8a05b1" //luli
+    // return "5d83d89da9787e265c41e0d0" //Liat Cohen
 }
 
 //TO DO: add likes, delete tweet

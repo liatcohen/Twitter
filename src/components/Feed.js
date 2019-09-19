@@ -4,7 +4,6 @@ import Tweet from './Tweet'
 const url = `http://localhost:4000`
 
 function Feed() {
-
     const [tweets, setTweets] = useState([])
 
     useEffect(() => {
