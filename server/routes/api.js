@@ -18,11 +18,22 @@ router.post('/tweet', function (req, res) {
     const tweet = new Tweet({
         user: getUserHeader(),
         text: req.body.text,
-        time: moment().format()
+        time: moment().format(),
+        parent: req.body.parent || null
     })
     console.log(tweet)
     tweet.save()
     res.send(tweet)
+})
+
+router.put('/follow/:follow_id', function(req,res){
+    const follow_id=req.params.follow_id
+    user.update(  
+        {_id: getUserHeader()}, 
+        {$push: {
+            following: follow_id
+        }}
+    )
 })
 
 // router.post('/user', function (req, res) {

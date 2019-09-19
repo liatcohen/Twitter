@@ -8,7 +8,8 @@ const TweetSchema = new Schema({
         attachType: String,
         content: String
     },
-    time: Schema.Types.Date
+    time: Schema.Types.Date,
+    parent: {type: Schema.Types.ObjectId, ref: 'Tweet'}
 })
 
 const Tweet = mongoose.model("tweet", TweetSchema)
