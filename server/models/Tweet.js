@@ -12,7 +12,7 @@ const TweetSchema = new Schema({
     parent: {type: Schema.Types.ObjectId, ref: 'Tweet'}
 })
 
-const Tweet = mongoose.model("tweet", TweetSchema)
+const Tweet = mongoose.model("Tweet", TweetSchema)
 
 module.exports = Tweet
 

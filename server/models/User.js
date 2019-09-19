@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     creationTime: Schema.Types.Date
 })
 
-const User = mongoose.model("user", UserSchema)
+const User = mongoose.model("User", UserSchema)
 
 module.exports = User
 
