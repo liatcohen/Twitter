@@ -35,18 +35,32 @@ router.get('/user/:id', function (req, res) { //get user tweets
         });
     })
 })
+
 router.put('/follow/:follow_id', function (req, res) {
     const follow_id = req.params.follow_id
-    user.update(
-        { _id: getUserHeader() },
+    User.findByIdAndUpdate(getUserHeader(),
         {
             $push: {
                 following: follow_id
             }
-        }
-    )
+        }).exec((err, user) => {
+            res.send(user)
+        })
+
 })
 
+router.put('/unfollow/:follow_id', function (req, res) {
+    const follow_id = req.params.follow_id
+    User.findByIdAndUpdate(getUserHeader(),
+        {
+            $pull: {
+                following: follow_id
+            }
+        }).exec((err, user) => {
+            res.send(user)
+        })
+
+})
 router.post('/user', function (req, res) {
     const user = new User({
         name: "Luli",
