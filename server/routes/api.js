@@ -4,19 +4,25 @@ const moment = require('moment')
 const User = require('../models/User')
 const Tweet = require('../models/Tweet')
 
-router.get('/', function (req, res) {
-    res.send("all good")
-})
 
-router.get('/tweets', function (req, res) {
+router.get('/tweets', getTweets)
+router.get('/tweet/:id', getTweet)
+router.post('/tweet', postTweet)
+router.delete('/tweet/:id', deleteTweet)
+router.get('/user/:id', getUser)
+router.put('/follow/:follow_id', follow)
+router.put('/unfollow/:follow_id', unfollow)
+router.post('/user', postUser)
+
+function getTweets(req, res) {
     Tweet.find({}).populate("user", "name imageUrl")
         .exec(function (err, tweets) {
             console.log(tweets)
             res.send({ tweets: tweets })
         });
-})
+}
 
-router.get('/tweet/:id', async function (req, res) {
+async function getTweet(req, res) {
     console.log("get tweets")
     Tweet.findById(req.params.id).populate("user", "name imageUrl")
         .exec(async function (err, tweet) {
@@ -24,7 +30,7 @@ router.get('/tweet/:id', async function (req, res) {
             const next = await getNextTweets(tweet)
             res.send({ prev, next, tweet })
         })
-})
+}
 
 async function getPreviousTweets(tweet) {
     let prev = []
@@ -39,15 +45,15 @@ async function getPreviousTweets(tweet) {
 
 async function getNextTweets(tweet) {
     let next = []
-    while(tweet!=null){
-        tweet = await Tweet.findOne({parent: tweet._id}).populate("user", "name imageUrl")
-        if(tweet){
+    while (tweet != null) {
+        tweet = await Tweet.findOne({ parent: tweet._id }).populate("user", "name imageUrl")
+        if (tweet) {
             next.push(tweet)
         }
     }
     return next
 }
-router.post('/tweet', function (req, res) {
+function postTweet(req, res) {
     const tweet = new Tweet({
         user: getUserHeader(),
         text: req.body.text,
@@ -57,22 +63,26 @@ router.post('/tweet', function (req, res) {
     console.log(tweet)
     tweet.save()
     res.send(tweet)
-})
+}
 
-router.delete('/tweet/:id', function (req, res) {
+
+function deleteTweet(req, res) {
     //delete all connceted tweets:
 
     // Tweet.findByIdAndRemove(req.params.id).
-})
-router.get('/user/:id', function (req, res) { //get user tweets
+}
+
+
+function getUser(req, res) { //get user tweets
     User.findById(req.params.id).exec((err, user) => {
         Tweet.find({ user: user }).populate("user", "name imageUrl").exec((err, tweets) => {
             res.send({ tweets, user })
         });
     })
-})
+}
 
-router.put('/follow/:follow_id', function (req, res) {
+
+function follow(req, res) {
     const follow_id = req.params.follow_id
     User.findByIdAndUpdate(getUserHeader(),
         {
@@ -83,9 +93,9 @@ router.put('/follow/:follow_id', function (req, res) {
             res.send(user)
         })
 
-})
+}
 
-router.put('/unfollow/:follow_id', function (req, res) {
+function unfollow(req, res) {
     const follow_id = req.params.follow_id
     User.findByIdAndUpdate(getUserHeader(),
         {
@@ -96,8 +106,9 @@ router.put('/unfollow/:follow_id', function (req, res) {
             res.send(user)
         })
 
-})
-router.post('/user', function (req, res) {
+}
+
+function postUser(req, res) {
     const user = new User({
         name: "Luli",
         email: "luli@gmail.com",
@@ -112,7 +123,7 @@ router.post('/user', function (req, res) {
     // })
     user.save()
     res.send(user)
-})
+}
 
 const getUserHeader = () => {
     // return "5d825f5d190523278ba42324" //luli
