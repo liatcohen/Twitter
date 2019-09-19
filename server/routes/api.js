@@ -8,8 +8,8 @@ router.get('/', function (req, res) {
     res.send("all good")
 })
 
-router.get('/tweets', async function (req, res) {
-    const tweets = await Tweet.find({}).populate("user", "name imageUrl")
+router.get('/tweets', function (req, res) {
+    Tweet.find({}).populate("user", "name imageUrl")
         .exec(function (err, tweets) {
             console.log(tweets)
             res.send({ tweets: tweets })
@@ -17,7 +17,6 @@ router.get('/tweets', async function (req, res) {
 })
 
 router.post('/tweet', function (req, res) {
-    console.log(req.headers)
     const tweet = new Tweet({
         user: getUserHeader(),
         text: req.body.text,
@@ -29,9 +28,12 @@ router.post('/tweet', function (req, res) {
     res.send(tweet)
 })
 
-router.get('/user/:id', async function (req, res) { //get user tweets
-    // const tweets = await Tweet.find({})
-    // res.send({ tweets: tweets })
+router.get('/user/:id', function (req, res) { //get user tweets
+    User.findById(req.params.id).exec((err, user) => {
+        Tweet.find({ user: user }).exec((err, tweets) => {
+            res.send({ tweets, user })
+        });
+    })
 })
 router.put('/follow/:follow_id', function (req, res) {
     const follow_id = req.params.follow_id
