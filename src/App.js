@@ -6,6 +6,7 @@ import User from './components/User'
 import BigTweet from './components/BigTweet'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Body from "./Body"
+import Login from './components/Authentication/Login'
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<div className="App">
 					<Route exact path="/" render={() => (<Redirect to="/feed"/>)}/>
 					<Route path="/feed" component={Body}/>
+          <Route path="/login" component={Login}/>
 					<Route path="/tweet/:id" render={({match}) => <BigTweet match={match}/>}/>
 					<Route path="/user/:id" render={({match}) => <User match={match}/>}/>
 				</div>
