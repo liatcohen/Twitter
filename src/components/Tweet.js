@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
+import {Card} from '@material-ui/core'
+import CardHeader from "@material-ui/core/CardHeader"
+import Avatar from "@material-ui/core/Avatar"
 
 function Tweet(props) {
+	return (
+		<Card className="tweet">
+			<CardHeader title={props.tweet.user.name}
+									subheader="lasdasd"
+									avatar={<Avatar aria-label="recipe">
+										R
+									</Avatar>}/>
 
-    return (
-        <div className="tweet"> 
-            <p>{props.tweet.user.name}</p>
-            <p><b>{props.tweet.text}</b></p>
-        </div>
-    );
+			<p><b>{props.tweet.text}</b></p>
+		</Card>
+	)
 }
 
-export default Tweet;
+export default Tweet

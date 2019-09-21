@@ -135,8 +135,8 @@ function postUser(req, res) {
 }
 
 const getUserHeader = () => {
-    // return "5d825f5d190523278ba42324" //luli
-    return "5d83422e6f50a23c38db2e0f" //Liat Cohen
+    return "5d83dc01d3bfb47b0c8a05b1" //luli
+    // return "5d83d89da9787e265c41e0d0" //Liat Cohen
 }
 
 //POST new user route (optional, everyone has access)
@@ -197,7 +197,7 @@ router.post('/signup', auth.optional, (req, res, next) => {
 //     })(req, res, next);
 // });
 
-router.post('/login', 
+router.post('/login',
 passport.authenticate('local'),(req, res) =>{
     console.log("login")
    console.log(req.user)
