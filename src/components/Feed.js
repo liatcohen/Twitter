@@ -1,25 +1,43 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import {AppBar, Toolbar, Container} from '@material-ui/core'
 import Tweet from './Tweet'
+import Drawer from "@material-ui/core/Drawer"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+
 const url = `http://localhost:4000`
 
 function Feed() {
-    const [tweets, setTweets] = useState([])
+	const [tweets, setTweets] = useState([])
 
-    useEffect(() => {
-        axios.get(`${url}/tweets`)
-        .then(res => {
-            console.log(res.data.tweets);
-            setTweets(res.data.tweets)
-        });
-    }, [])
+	useEffect(() => {
+		axios.get(`${url}/tweets`)
+			.then(res => {
+				console.log(res.data.tweets)
+				setTweets(res.data.tweets)
+			})
+	}, [])
 
-    return (
-        <div className="feed">
-            Feed
-            {tweets.map(t=> <Tweet key={t._id} tweet={t}/>)}
-        </div>
-    );
+	return (
+		<div className="feed">
+			<AppBar position={"static"}>
+				<Toolbar>
+					Da REAL Twitter
+				</Toolbar>
+			</AppBar>
+			<Drawer variant="permanent">
+				<List>
+					<ListItem >
+						fooo
+					</ListItem>
+				</List>
+			</Drawer>
+			<Container>
+				{tweets.map(t => <Tweet key={t._id} tweet={t}/>)}
+			</Container>
+		</div>
+	)
 }
 
-export default Feed;
+export default Feed
