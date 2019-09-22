@@ -11,7 +11,9 @@ function TweetsThread(props) {
     const [tweets, setTweets] = useState({ prev, next, tweet: null })
 
 
-
+    const tweetClicked = (tweetId) => {
+        props.history.push(`tweet/${tweetId}`)
+    }
 
     useEffect(() => {
         async function loadTweets() {
@@ -20,19 +22,19 @@ function TweetsThread(props) {
             console.log(tweets.tweet)
         }
         loadTweets();
-    }, []); // Or [] if effect doesn't need props or state
-
+    }, [props.match.params.id]);
 
     console.log(props.match)
     return (
         <div>Tweets Thread
+            <div>
+                {tweets.prev.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked} />)}
+                {tweets.tweet ?
+                    <BigTweet tweet={tweets.tweet} />
+                    : null}
+                {tweets.next.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked} />)}
 
-
-            {tweets.prev.map(t => <Tweet key={t._id} tweet={t} />)}
-            {tweets.tweet ?
-                <BigTweet tweet={tweets.tweet} />
-                : null}
-            {tweets.next.map(t => <Tweet key={t._id} tweet={t} />)}
+            </div>
 
         </div>
     )

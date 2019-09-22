@@ -13,7 +13,7 @@ export const login = async (email, password) => {
         console.log(res)
         localStorage.setItem("token", res.data)
         return true
-    } catch{
+    } catch {
         console.log("catch error")
         return false
     }
@@ -36,10 +36,7 @@ export const logout = () => {
 }
 
 export const getTweet = async (id) => {
-    const tweet=await axios.get(`${url}/tweet/${id}`)
-    console.log("api client get tweet")
-    console.log(tweet.data)
-
+    const tweet = await axios.get(`${url}/tweet/${id}`)
     return tweet.data
 }
 

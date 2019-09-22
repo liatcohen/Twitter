@@ -22,6 +22,10 @@ function Feed(props) {
     const tweetClicked=(tweetId)=>{
         props.history.push(`tweet/${tweetId}`)
     }
+
+    const userClicked=(userId)=>{
+        props.history.push(`user/${userId}`)
+	}
 	return (
 		<div className="feed">
 			<AppBar position={"static"}>
@@ -37,7 +41,7 @@ function Feed(props) {
 				</List>
 			</Drawer>
 			<Container>
-				{tweets.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked}/>)}
+				{tweets.map(t => <Tweet key={t._id} tweet={t}/>)}
 			</Container>
 		</div>
 	)
