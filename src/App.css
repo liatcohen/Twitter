@@ -35,3 +35,14 @@
   background-color: #61dafb;
   margin: 10px;
 }
+
+.auth-box{
+  background-color: #dfe2e9;
+  height: 70vh;
+  width: 50vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+

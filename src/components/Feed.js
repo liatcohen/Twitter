@@ -8,7 +8,7 @@ import ListItem from "@material-ui/core/ListItem"
 
 const url = `http://localhost:4000`
 
-function Feed() {
+function Feed(props) {
 	const [tweets, setTweets] = useState([])
 
 	useEffect(() => {
@@ -19,6 +19,13 @@ function Feed() {
 			})
 	}, [])
 
+    const tweetClicked=(tweetId)=>{
+        props.history.push(`tweet/${tweetId}`)
+    }
+
+    const userClicked=(userId)=>{
+        props.history.push(`user/${userId}`)
+	}
 	return (
 		<div className="feed">
 			<AppBar position={"static"}>
