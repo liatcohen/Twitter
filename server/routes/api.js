@@ -31,7 +31,7 @@ function getTweets(req, res) {
 }
 
 async function getTweet(req, res) {
-    console.log("get tweets")
+    console.log("get tweet")
     Tweet.findById(req.params.id).populate("user", "name imageUrl")
         .exec(async function (err, tweet) {
             const prev = await getPreviousTweets(tweet)
