@@ -5,7 +5,6 @@ import Feed from './components/Feed'
 import User from './components/User'
 import TweetsThread from './components/TweetsThread'
 import CssBaseline from "@material-ui/core/CssBaseline"
-import Body from "./Body"
 import Login from './components/Authentication/Login'
 import NewTweet from './components/NewTweet';
 
