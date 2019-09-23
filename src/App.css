@@ -43,3 +43,7 @@
   padding: 20px;
 }
 
+a{
+  text-decoration: none;
+  color: #282c34;
+}

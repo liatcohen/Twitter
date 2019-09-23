@@ -33,13 +33,21 @@ export const logout = () => {
 }
 
 export const getTweets = async (id) => {
-    const res = await axios.get(`${url}/tweets`, { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
+    const res = await axios.get(`${url}/tweets`,
+        { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
     console.log(res.data.tweets)
     return res.data.tweets
 }
 
 export const getTweet = async (id) => {
-    const tweet = await axios.get(`${url}/tweet/${id}`,{ headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
+    const tweet = await axios.get(`${url}/tweet/${id}`,
+        { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
     return tweet.data
 }
 
+
+export const getUserTweets = async (userId) => {
+    const res = await axios.get(`${url}/user/${userId}`,
+        { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
+    return res.data
+}

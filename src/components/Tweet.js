@@ -3,12 +3,12 @@ import Avatar from "@material-ui/core/Avatar"
 import styled from "styled-components"
 import moment from "moment"
 import CommentIcon from '@material-ui/icons/Comment'
+import { NavLink } from 'react-router-dom'
 
 const UserImage = styled(Avatar)`
   width: 50px;
   height: 50px;
 `
-
 
 const TweetBody = styled.div`
   display: flex;
@@ -29,7 +29,6 @@ const HeaderContent = styled.div`
   display: flex;
   flex-direction: row;
 `
-
 const Username = styled.span`
   font-weight: bold;
   margin-right: 4px;
@@ -63,15 +62,16 @@ function Tweet(props) {
             <TweetLeft><UserImage>R</UserImage></TweetLeft>
             <TweetRight>
                 <HeaderContent>
+                <NavLink to={`/user/${props.tweet.user._id}`}>
                     <Username>{user.name}</Username>
-                    ·
+                    </NavLink>
                     <TweetDate>{moment(props.tweet.time).format('MMM Do')}</TweetDate>
                 </HeaderContent>
                 <TweetText>
                     {tweet.text}
                 </TweetText>
                 <FooterContent>
-                    <CommentIcon fontSize='small    '/>
+                    <CommentIcon fontSize='small'/>
                 </FooterContent>
             </TweetRight>
         </TweetBody>
