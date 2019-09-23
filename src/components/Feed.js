@@ -3,7 +3,7 @@ import axios from 'axios'
 import Tweet from './Tweet'
 import styled from "styled-components"
 import { getTweets } from '../ApiClient'
-const url = `http://localhost:4000`
+import NewTweet from './NewTweet'
 const Body = styled.div`
 	width: 60%;
 	margin: auto;
@@ -22,6 +22,7 @@ function Feed() {
 
     return (
         <Body>
+            <NewTweet/>
             {tweets.map(t => <Tweet key={t._id} tweet={t} />)}
         </Body>
     )

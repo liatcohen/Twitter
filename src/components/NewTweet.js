@@ -1,21 +1,22 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
+import { TextField } from '@material-ui/core';
 
-// function NewTweet(props) {
-//     const [text, setText]=useState('')
-//     return (
+function NewTweet(props) {
+    const [text, setText] = useState('')
+    return (
+        <div>
+        <TextField
+                id="outlined-multiline-static"
+                // label="Multiline"
+                multiline
+                rows="4"
+                // defaultValue="Default Value"
+                margin="normal"
+                variant="outlined"
+                placeholder="What's happening?"
+            />
+        </div>
+    )
+}
 
-//         <TextField
-//         id="outlined-multiline-static"
-//         label="Multiline"
-//         multiline
-//         rows="4"
-//         defaultValue="Default Value"
-//         className={classes.textField}
-//         margin="normal"
-//         variant="outlined"
-//       />
-
-//     )
-// }
-
-// export default NewTweet
+export default NewTweet

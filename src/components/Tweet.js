@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Avatar from "@material-ui/core/Avatar"
 import styled from "styled-components"
 import moment from "moment"
 import CommentIcon from '@material-ui/icons/Comment'
 import { NavLink } from 'react-router-dom'
+import ReplyTweet from './ReplyTweet'
 
 const UserImage = styled(Avatar)`
   width: 50px;
@@ -55,25 +56,30 @@ function Tweet(props) {
     const closeModal = () => setModalIsOpen(false)
 
 
-    const {tweet} = props
-    const {user} = tweet
+    const { tweet } = props
+    const { user } = tweet
     return (
         <TweetBody>
             <TweetLeft><UserImage>R</UserImage></TweetLeft>
             <TweetRight>
                 <HeaderContent>
-                <NavLink to={`/user/${props.tweet.user._id}`}>
-                    <Username>{user.name}</Username>
+                    <NavLink to={`/user/${props.tweet.user._id}`}>
+                        <Username>{user.name}</Username>
                     </NavLink>
                     <TweetDate>{moment(props.tweet.time).format('MMM Do')}</TweetDate>
                 </HeaderContent>
-                <TweetText>
-                    {tweet.text}
-                </TweetText>
+                <NavLink to={`/tweet/${props.tweet._id}`}>
+                    <TweetText>
+                        {tweet.text}
+                    </TweetText>
+                </NavLink>
                 <FooterContent>
-                    <CommentIcon fontSize='small'/>
+                    <i onClick={openModal} className="far fa-comment" />
+                    {/* <CommentIcon onClick={openModal} fontSize='small' /> */}
                 </FooterContent>
             </TweetRight>
+            <ReplyTweet modalIsOpen={modalIsOpen} closeModal={closeModal} tweet={props.tweet}/>
+
         </TweetBody>
 
     )

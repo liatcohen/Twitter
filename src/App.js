@@ -7,16 +7,19 @@ import TweetsThread from './components/TweetsThread'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Login from './components/Authentication/Login'
 import NewTweet from './components/NewTweet';
+import Navbar from "./components/Navbar"
 
 function App() {
 
-	
+
 	return (
 		<React.Fragment>
-			<CssBaseline />
+			<CssBaseline />		
+			<div className="App">
+			<Navbar/>
 			<Router>
-				<div className="App">
-					<Route exact path="/" render={() => (<Redirect to="/feed"/>)}/>
+			<div className="body">
+					<Route exact path="/" render={() => (<Redirect to="/feed" />)} />
 					<Route path="/feed" component={Feed} />
 					<Route path="/login" component={Login} />
 					<Route path="/tweet/:id" render={({ match }) => <TweetsThread match={match} />} />
@@ -25,6 +28,8 @@ function App() {
 
 				</div>
 			</Router>
+			</div>
+
 		</React.Fragment>
 	)
 }
