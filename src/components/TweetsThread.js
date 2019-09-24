@@ -28,11 +28,11 @@ function TweetsThread(props) {
     return (
         <div>Tweets Thread
             <div>
-                {tweets.prev.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked} />)}
+                {tweets.prev.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked} bigTweet={false}/>)}
                 {tweets.tweet ?
-                    <BigTweet tweet={tweets.tweet} />
+                    <Tweet tweet={tweets.tweet} tweetClicked={tweetClicked} bigTweet={true}/>
                     : null}
-                {tweets.next.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked} />)}
+                {tweets.next.map(t => <Tweet key={t._id} tweet={t} tweetClicked={tweetClicked}  bigTweet={false}/>)}
 
             </div>
 

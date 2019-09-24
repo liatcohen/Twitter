@@ -5,8 +5,9 @@ const User = require('../models/User')
 const Tweet = require('../models/Tweet')
 const passport = require('passport')
 const auth = require('../auth')
-const defaultImage = "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiVrsb96NrkAhUQGewKHd5kCrYQjRx6BAgBEAQ&url=https%3A%2F%2Ficon-library.net%2Ficon%2Fperson-image-icon-7.html&psig=AOvVaw0B2Fxx2SURD42nDBeT0i4X&ust=1568911512313350"
-
+const defaultImage =
+"https://www.r-users.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+const axios = require('axios')
 router.use(passport.initialize())
 router.use(passport.session())
 

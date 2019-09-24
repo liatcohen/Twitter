@@ -23,7 +23,7 @@ function Feed() {
     return (
         <Body>
             <NewTweet/>
-            {tweets.map(t => <Tweet key={t._id} tweet={t} />)}
+            {tweets.map(t => <Tweet key={t._id} tweet={t} /> )}
         </Body>
     )
 }

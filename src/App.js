@@ -6,6 +6,7 @@ import User from './components/User'
 import TweetsThread from './components/TweetsThread'
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Login from './components/Authentication/Login'
+import Signup from './components/Authentication/Signup'
 import NewTweet from './components/NewTweet';
 import Navbar from "./components/Navbar"
 import PeopleToFollow from './components/PeopleToFollow'
@@ -26,6 +27,7 @@ function App() {
 						<Route exact path="/" render={() => (<Redirect to="/feed" />)} />
 						<Route path="/feed" component={Feed} />
 						<Route path="/login" component={Login} />
+						<Route path="/signup" component={Signup} />
 						<Route path="/tweet/:id" render={({ match }) => <TweetsThread match={match} />} />
 						<Route path="/user/:id" render={({ match }) => <User match={match} />} />
 						<Route path="/newTweet" component={NewTweet} />

@@ -22,6 +22,7 @@ function Login(props) {
             return
         }
         const auth = await signup(name, email, password)
+        console.log(auth)
         if (auth) {
             props.history.push('/feed')
         } else {

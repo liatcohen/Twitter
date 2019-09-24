@@ -18,14 +18,25 @@ export const login = async (email, password) => {
 }
 
 export const signup = async (name, email, password) => {
-    const res = await axios.post(`${url}/signup`, {
-        "user": {
-            "name": name,
-            "email": email,
-            "password": password
-        }
-    })
-    localStorage.setItem("token", res.data.token)
+    console.log("SIGN UP")
+    try {
+        const res = await axios.post(`${url}/signup`, {
+            "user": {
+                "name": name,
+                "email": email,
+                "password": password
+            }
+        })
+        console.log("token:")
+        console.log(res.data.token)
+        localStorage.setItem("token", res.data.token)
+        return true
+    }
+    catch (e) {
+        console.log("catch error")
+
+        return e
+    }
 }
 
 export const logout = () => {
@@ -52,10 +63,10 @@ export const getUserTweets = async (userId) => {
     return res.data
 }
 
-export const postTweet = async (text) => {
-    const tweet = await axios.post(`${url}/tweet`,{text:text},
+export const postTweet = async (text, parent) => {
+    const tweet = await axios.post(`${url}/tweet`, { text: text, parent: parent },
         { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
-        console.log("post tweet api client")
-        console.log(tweet)
+    console.log("post tweet api client")
+    console.log(tweet)
     // return tweet.data
 }
