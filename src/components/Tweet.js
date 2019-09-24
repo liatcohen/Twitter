@@ -57,6 +57,7 @@ const BigFooterContent= styled.div`
 
 `
 const BigFooter = styled.div`
+margin-top: 15px;
 `
 const SmallTweetText = styled.div`
 `

@@ -4,6 +4,12 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MailIcon from '@material-ui/icons/Mail';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { NavLink } from 'react-router-dom'
+import Icon from '@material-ui/core/Icon';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
+import BookmarkBorderRoundedIcon from '@material-ui/icons/BookmarkBorderRounded';
+import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import MoreHorizRoundedIcon from '@material-ui/icons/MoreHorizRounded';
 
 const drawerWidth = 240;
 
@@ -29,35 +35,31 @@ function Navbar(props) {
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen);
     }
-
+    const menu = [
+        { name: 'Messages', icon: <MailOutlineRoundedIcon/>  },
+        { name: 'Bookmarks', icon: <BookmarkBorderRoundedIcon /> },
+        { name: 'Profile', icon: <AccountCircleRoundedIcon /> },
+        { name: 'More', icon: <MoreHorizRoundedIcon /> }
+    ]
     const drawer = (
         <div>
             <div className={classes.toolbar} />
             <Divider />
             <List>
-            <NavLink to={`/feed`}>
-                <ListItem button>
-                    <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                    <ListItemText primary={"Feed"} />
-                </ListItem>
-            </NavLink>
+                <NavLink to={`/feed`}>
+                    <ListItem button>
+                        <ListItemIcon>{<HomeRoundedIcon />}</ListItemIcon>
+                        <ListItemText primary={"Feed"} />
+                    </ListItem>
+                </NavLink>
+                {menu.map((m) => (
+                    <ListItem button key={m.name}>
+                        <ListItemIcon>{m.icon}</ListItemIcon>
+                        <ListItemText primary={m.name} />
+                    </ListItem>
+                ))}                
+            </List>
 
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
