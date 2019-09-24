@@ -1,21 +1,44 @@
 import React, { useState } from 'react'
-import { TextField } from '@material-ui/core';
-
+import { TextField, Divider } from '@material-ui/core';
+import styled from "styled-components"
+import {postTweet} from '../ApiClient'
+const NewTweetContainer = styled.div`
+    color: red;
+    background-color: lightgray;
+    display: flex;
+`
+const UserImg= styled.div`
+    
+`
+const TextContainer= styled.div`
+    display: flex;
+    flex-direction: column;
+`
 function NewTweet(props) {
     const [text, setText] = useState('')
+
+    const postTweetClicked= async ()=>{
+        await postTweet(text)
+        setText('')
+    }
     return (
-        <div>
-        <TextField
+        <NewTweetContainer>
+            <UserImg>userImg</UserImg>
+            <TextContainer>
+            <TextField
                 id="outlined-multiline-static"
-                // label="Multiline"
                 multiline
                 rows="4"
-                // defaultValue="Default Value"
                 margin="normal"
                 variant="outlined"
                 placeholder="What's happening?"
+                value={text}
+                onChange={(e)=>setText(e.target.value)}
             />
-        </div>
+            <button onClick={postTweetClicked}>Tweet</button>
+            </TextContainer>
+            <Divider/>
+        </NewTweetContainer>
     )
 }
 

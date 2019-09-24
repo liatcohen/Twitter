@@ -4,9 +4,9 @@ import Tweet from './Tweet'
 import styled from "styled-components"
 import { getTweets } from '../ApiClient'
 import NewTweet from './NewTweet'
+
 const Body = styled.div`
-	width: 60%;
-	margin: auto;
+	
 `
 
 function Feed() {

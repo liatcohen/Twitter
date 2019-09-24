@@ -51,3 +51,11 @@ export const getUserTweets = async (userId) => {
         { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
     return res.data
 }
+
+export const postTweet = async (text) => {
+    const tweet = await axios.post(`${url}/tweet`,{text:text},
+        { headers: { authorization: `Token ${localStorage.getItem('token')}`, } })
+        console.log("post tweet api client")
+        console.log(tweet)
+    // return tweet.data
+}

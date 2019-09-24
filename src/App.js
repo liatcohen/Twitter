@@ -8,26 +8,31 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import Login from './components/Authentication/Login'
 import NewTweet from './components/NewTweet';
 import Navbar from "./components/Navbar"
+import PeopleToFollow from './components/PeopleToFollow'
+import styled from "styled-components"
+import { Divider } from '@material-ui/core';
 
+const Body = styled.div`
+		width : 800px;
+`
 function App() {
-
-
 	return (
 		<React.Fragment>
-			<CssBaseline />		
+			<CssBaseline />
 			<div className="App">
-			<Navbar/>
-			<Router>
-			<div className="body">
-					<Route exact path="/" render={() => (<Redirect to="/feed" />)} />
-					<Route path="/feed" component={Feed} />
-					<Route path="/login" component={Login} />
-					<Route path="/tweet/:id" render={({ match }) => <TweetsThread match={match} />} />
-					<Route path="/user/:id" render={({ match }) => <User match={match} />} />
-					<Route path="/newTweet" component={NewTweet} />
-
-				</div>
-			</Router>
+				<Router>
+					<Navbar />
+					<Body>
+						<Route exact path="/" render={() => (<Redirect to="/feed" />)} />
+						<Route path="/feed" component={Feed} />
+						<Route path="/login" component={Login} />
+						<Route path="/tweet/:id" render={({ match }) => <TweetsThread match={match} />} />
+						<Route path="/user/:id" render={({ match }) => <User match={match} />} />
+						<Route path="/newTweet" component={NewTweet} />
+					</Body>
+					<Divider />
+					<PeopleToFollow />
+				</Router>
 			</div>
 
 		</React.Fragment>
