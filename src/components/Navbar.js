@@ -1,10 +1,7 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemText, Divider, Drawer, Hidden } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MailIcon from '@material-ui/icons/Mail';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { NavLink } from 'react-router-dom'
-import Icon from '@material-ui/core/Icon';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
 import BookmarkBorderRoundedIcon from '@material-ui/icons/BookmarkBorderRounded';
@@ -36,7 +33,7 @@ function Navbar(props) {
         setMobileOpen(!mobileOpen);
     }
     const menu = [
-        { name: 'Messages', icon: <MailOutlineRoundedIcon/>  },
+        { name: 'Messages', icon: <MailOutlineRoundedIcon /> },
         { name: 'Bookmarks', icon: <BookmarkBorderRoundedIcon /> },
         { name: 'Profile', icon: <AccountCircleRoundedIcon /> },
         { name: 'More', icon: <MoreHorizRoundedIcon /> }
@@ -57,7 +54,7 @@ function Navbar(props) {
                         <ListItemIcon>{m.icon}</ListItemIcon>
                         <ListItemText primary={m.name} />
                     </ListItem>
-                ))}                
+                ))}
             </List>
 
         </div>

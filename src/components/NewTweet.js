@@ -6,11 +6,11 @@ import Avatar from "@material-ui/core/Avatar"
 import Button from '@material-ui/core/Button';
 
 const NewTweetContainer = styled.div`
-    
     display: flex;
+    margin-left:8px;
 `
 const TweetButton = styled(Button)`
-    background-color:#42a5f5;
+    background-color:#1DA1F2;
     color: white;
     font-weight: 700;
     width: 100px;
@@ -24,7 +24,7 @@ const UserImage = styled(Avatar)`
 `
 const Input = styled.textarea`
     background-color: transparent;
-    width: 550px ;
+    width: 600px ;
     height: 100px;
     font-size: 18px;
     border: none;

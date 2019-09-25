@@ -27,9 +27,7 @@ export const signup = async (name, email, password) => {
                 "password": password
             }
         })
-        console.log("token:")
-        console.log(res.data.token)
-        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("token", res.data.user.token)
         return true
     }
     catch (e) {

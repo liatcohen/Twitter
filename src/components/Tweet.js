@@ -16,6 +16,7 @@ const TweetBody = styled.div`
   display: flex;
   flex-direction: row;
   padding: 4px;
+  margin-left:8px;
 `
 
 const TweetLeft = styled.div`

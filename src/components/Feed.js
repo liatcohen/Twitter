@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Tweet from './Tweet'
 import styled from "styled-components"
 import { getTweets } from '../ApiClient'
 import NewTweet from './NewTweet'
 
 const Body = styled.div`
-	
+    width: 700px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 `
 
 function Feed() {
