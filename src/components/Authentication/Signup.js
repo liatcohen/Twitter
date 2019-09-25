@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { signup } from "../../ApiClient";
+import { NavLink } from 'react-router-dom'
 
 function Login(props) {
     const [name, setName] = useState('')
@@ -9,7 +10,7 @@ function Login(props) {
     const [password, setPassword] = useState('')
 
     const signupClicked = async () => {
-        if(!name){
+        if (!name) {
             alert("name is required")
             return
         }
@@ -57,6 +58,9 @@ function Login(props) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <Button onClick={signupClicked} variant="contained" color="primary">Sign Up</Button>
+            <div>Already have an account?
+                <NavLink to={`/login`}>Log in</NavLink>
+            </div>
         </div>
     )
 }

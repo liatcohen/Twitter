@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { login } from "../../ApiClient";
+import { NavLink } from 'react-router-dom'
 
 function Login(props) {
 
@@ -47,6 +48,9 @@ function Login(props) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <Button onClick={loginClicked} variant="contained" color="primary">Login</Button>
+            <div>New to Twitter?
+                <NavLink to={`/signup`}>Sign up now</NavLink>
+            </div>
         </div>
     )
 }
